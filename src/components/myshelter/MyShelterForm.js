@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, Picker } from 'react-native';
+import { View, Text, Picker, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { itemUpdate } from '../../actions';
 import { CardSection, Input } from '../common';
+import { Actions } from 'react-native-router-flux';
 
 class MyShelterForm extends Component {
   render() {
     return (
       <View>
+        <TouchableOpacity onPress={() => { Actions.UploadFromCameraRoll() }}>
+            <Text>Add Picture</Text>
+        </TouchableOpacity>
+
         <CardSection>
           <Input
             value={this.props.itemImageUrl}

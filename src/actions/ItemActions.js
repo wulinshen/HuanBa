@@ -8,8 +8,8 @@ import {
 } from './types';
 import axios from 'axios';
 
-// const apiUrl = 'https://vince2ndtry.herokuapp.com/users';
-const apiUrl = 'http://localhost:8000/users';
+ const apiUrl = 'https://vince2ndtry.herokuapp.com/users';
+// const apiUrl = 'http://localhost:8000/users';
 const userid = '5869e210734d1d07ca07c3dd';
 
 export const itemUpdate = ({ prop, value }) => {

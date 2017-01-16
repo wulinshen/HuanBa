@@ -23,7 +23,7 @@ class LoginForm extends Component {
   }
 
   onLoginButtonPress() {
-  Actions.OwnerProfileMain({type: 'reset'});
+  Actions.OwnerProfileMain();
   }
 
   onRegisterButtonPress(){

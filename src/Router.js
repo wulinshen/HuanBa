@@ -20,8 +20,9 @@ import OwnerProfileCreate from './components/owner/OwnerProfileCreate';
 import OwnerProfileEdit from './components/owner/OwnerProfileEdit';
 import OwnerProfileListItemDetail from './components/owner/OwnerProfileListItemDetail';
 
-// import ChatMain from './components/chat/ChatMain';
+import ChatMain from './components/chat/ChatMain';
 import ShoppingCart from './components/shoppingcart/Cart';
+import UploadFromCameraRoll from './components/blob/UploadFromCameraRoll';
 
 
 const RouterComponent = () => {
@@ -43,7 +44,7 @@ const RouterComponent = () => {
       </Scene>
 */}
       <Scene key="lookaround">
-        <Scene key="Main" component={Main} title="Welcome"  />
+        <Scene key="Main" component={Main} title="Welcome"  initial/>
         <Scene key="LoginForm" component={LoginForm} title="Login"  />
         <Scene key="RegisterForm" component={RegisterForm} title="Register"  />
 
@@ -59,10 +60,13 @@ const RouterComponent = () => {
         <Scene key="OwnerProfileListItemDetail" component={OwnerProfileListItemDetail} title="Detail"  />
 
         <Scene key="LookAroundMain" component={LookAroundMain} title="LookAroundMain"  />
-        <Scene key="LookAroundList" component={LookAroundList} title="LookAroundList" initial/>
+        <Scene key="LookAroundList" component={LookAroundList} title="LookAroundList" />
         <Scene key="LookAroundListItem" component={LookAroundList} title="LookAroundListItem" />
         <Scene key="LookAroundListItemDetail" component={LookAroundListItemDetail} title="Detail" />
+
+        <Scene key="ChatMain" component={ChatMain} title="ChatMain"  />
         <Scene key="ShoppingCart" component={ShoppingCart} title="ShoppingCart"  />
+        <Scene key="UploadFromCameraRoll" component={UploadFromCameraRoll} title="UploadFromCameraRoll"  />
       </Scene>
 
 

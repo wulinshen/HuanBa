@@ -22,6 +22,10 @@ class OwnerProfileMain extends Component {
      Actions.OwnerProfileListItemDetail();
   }
 
+  onFriendsOrdersButtonPress() {
+     Actions.Main();
+  }
+
 
   render() {
     return (

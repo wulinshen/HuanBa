@@ -37,7 +37,7 @@ class MyShelterEdit extends Component {
     const { _id, itemName, category, description, itemImageUrl } = this.props;
     console.log(_id, itemName, category, description, itemImageUrl);
     // debugger;
-    this.props.itemSave({ _id, itemName, category, description, itemImageUrl });
+    this.props.itemSave({ _id, itemName, category, description, itemImageUrl: itemImageUrl || 'https://upload.wikimedia.org/wikipedia/en/b/b7/Nologo.png' });
   }
 
 

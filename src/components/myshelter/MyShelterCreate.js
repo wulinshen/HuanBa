@@ -11,7 +11,7 @@ class MyShelterCreate extends Component {
   }
   onButtonPress() {
     const { itemName, category, description, itemImageUrl } = this.props;
-    this.props.itemCreate({ itemName, category, description, itemImageUrl });
+    this.props.itemCreate({ itemName, category, description, itemImageUrl: itemImageUrl || 'https://upload.wikimedia.org/wikipedia/en/b/b7/Nologo.png'});
   }
 
   render() {

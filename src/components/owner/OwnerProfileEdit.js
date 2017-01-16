@@ -34,7 +34,7 @@ class OwnerProfileEdit extends Component {
     const { _id, userName, profileUrl } = this.props;
     // console.log(_id, userName, profileUrl);
     // debugger;
-    this.props.ownerSave({ userName, profileUrl });
+    this.props.ownerSave({ userName, profileUrl: profileUrl || 'https://upload.wikimedia.org/wikipedia/en/b/b7/Nologo.png' });
   }
 
 

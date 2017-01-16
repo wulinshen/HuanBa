@@ -45,7 +45,7 @@ class NavBar extends React.Component {
             this.setState({
               selectedTab: 'home',
             });
-            Actions.pop();
+            Actions.Main();
           }}>
           {this.renderCart()}
         </Icon.TabBarItemIOS>
