@@ -76,6 +76,7 @@ class Cart extends Component {
               <ScrollView {...this.props}>
                 <ListView
                   enableEmptySections={true}
+                  keyboardShouldPersistTaps='always'
                   contentContainerStyle={styles.list}
                   dataSource={items}
                   renderRow={this.renderRow}

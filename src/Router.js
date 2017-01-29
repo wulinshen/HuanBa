@@ -22,7 +22,9 @@ import OwnerProfileListItemDetail from './components/owner/OwnerProfileListItemD
 
 import ChatMain from './components/chat/ChatMain';
 import ShoppingCart from './components/shoppingcart/Cart';
+
 import UploadFromCameraRoll from './components/blob/UploadFromCameraRoll';
+import AddPicture from './components/blob/AddPicture';
 
 
 const RouterComponent = () => {
@@ -66,7 +68,9 @@ const RouterComponent = () => {
 
         <Scene key="ChatMain" component={ChatMain} title="ChatMain"  />
         <Scene key="ShoppingCart" component={ShoppingCart} title="ShoppingCart"  />
+
         <Scene key="UploadFromCameraRoll" component={UploadFromCameraRoll} title="UploadFromCameraRoll"  />
+        <Scene key="AddPicture" component={AddPicture} title="AddPicture"  />
       </Scene>
 
 

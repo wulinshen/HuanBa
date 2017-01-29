@@ -51,6 +51,7 @@ class LookAroundList extends Component {
         <ScrollView contentContainerStyle={styles.list}>
                 <ListView
                   enableEmptySections
+                  keyboardShouldPersistTaps='always'
                   contentContainerStyle={styles.list}
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}

@@ -9,7 +9,7 @@ class MyShelterForm extends Component {
   render() {
     return (
       <View>
-        <TouchableOpacity onPress={() => { Actions.UploadFromCameraRoll() }}>
+        <TouchableOpacity onPress={() => { Actions.AddPicture() }}>
             <Text>Add Picture</Text>
         </TouchableOpacity>
 
