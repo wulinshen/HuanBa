@@ -10,7 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import Cart from '../shoppingcart/Cart';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import * as actionCreators from '../../actions/OwnerActions'
+import * as actionCreators from '../../actions/OwnerActions';
 import NavBar from '../navigation/NavBar';
 
 
@@ -97,7 +97,7 @@ class OwnerProfileListItemDetail extends Component {
   };
 
   const mapStateToProps = state => {
-    // console.log(state.ownersData);
+     console.log(state.ownersData);
    return { ownersData: state.ownersData };
  };
 

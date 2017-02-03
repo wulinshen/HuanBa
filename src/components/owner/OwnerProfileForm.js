@@ -3,16 +3,15 @@ import { View, Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { ownerUpdate } from '../../actions';
 import { CardSection, Input } from '../common';
+import AddImageButton from '../blob/AddImageButton';
+
 
 class OwnerProfileForm extends Component {
   render() {
     return (
       <View>
         <CardSection>
-          <Input
-            value={this.props.profileUrl}
-            onChangeText={value => this.props.ownerUpdate({ prop: 'profileUrl', value })}
-          />
+          <AddImageButton />
         </CardSection>
 
 

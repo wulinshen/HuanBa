@@ -35,15 +35,15 @@ class MyShelterEdit extends Component {
 
   onUpdateButtonPress() {
     const { _id, itemName, category, description, itemImageUrl } = this.props;
-    console.log(_id, itemName, category, description, itemImageUrl);
+    // console.log(_id, itemName, category, description, itemImageUrl);
     // debugger;
-    this.props.itemSave({ _id, itemName, category, description, itemImageUrl: itemImageUrl || 'https://upload.wikimedia.org/wikipedia/en/b/b7/Nologo.png' });
+    this.props.itemSave({ _id, itemName, category, description, itemImageUrl: itemImageUrl || 'https://upload.wikimedia.org/wikipedia/en/b/b7/Nologo.png'  });
   }
 
 
   onAccept() {
-   const { _id } = this.props.item;
-   this.props.itemDelete({ _id });
+   const { _id, itemImageUrl } = this.props.item;
+   this.props.itemDelete({ _id, itemImageUrl });
  }
 
   onDecline() {
@@ -94,7 +94,7 @@ class MyShelterEdit extends Component {
 
 const mapStateToProps = (state) => {
   const { _id, itemName, category, description, itemImageUrl } = state.itemForm;
-  console.log( _id, itemName, category, description, itemImageUrl );
+  // console.log( _id, itemName, category, description, itemImageUrl );
   // debugger;
   return { _id, itemName, category, description, itemImageUrl };
 };

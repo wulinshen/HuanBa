@@ -49,6 +49,7 @@ class MyShelterListItem extends Component {
 
   render() {
     const {itemName, category, itemImageUrl} = this.props.item;
+
     const {thumbnailContainerStyle, imageStyle, headerContentStyle, headerTextStyle, buttonStyle} = styles;
     // console.log(name, category, imageUrl);
     return (

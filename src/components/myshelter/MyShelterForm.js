@@ -4,20 +4,15 @@ import { connect } from 'react-redux';
 import { itemUpdate } from '../../actions';
 import { CardSection, Input } from '../common';
 import { Actions } from 'react-native-router-flux';
+import AddImageButton from '../blob/AddImageButton';
+
 
 class MyShelterForm extends Component {
   render() {
     return (
       <View>
-        <TouchableOpacity onPress={() => { Actions.AddPicture() }}>
-            <Text>Add Picture</Text>
-        </TouchableOpacity>
-
         <CardSection>
-          <Input
-            value={this.props.itemImageUrl}
-            onChangeText={value => this.props.itemUpdate({ prop: 'itemImageUrl', value })}
-          />
+          <AddImageButton />
         </CardSection>
 
 

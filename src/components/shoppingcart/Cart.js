@@ -29,15 +29,19 @@ class Cart extends Component {
   }
 
   onAccept() {
-    Actions.ChatMain();
+    // Actions.ChatMain();
     this.setState({showModal: false});
     // Communications.web('https://www.google.com');
-    // Communications.email('vincentwsql@gmail.com',
-    // 'wennieisnice@gmail.com',
-    //  null,
-    // 'BookS',
-    // 'Hi, I really like your books! Can I borrow?')
-    // console.log('hi');
+    // Communications.email(['wennieisnice@gmail.com'],
+    //                      ['vincentwsql@gmail.com'],
+    //                      null,
+    //                      'Book Rental',
+    //                      'Hi, I really like your books! Can I borrow?')
+    //  console.log('email sent');
+
+     Communications.text('3016554386',
+                          'Hi, I really like your books! Can I borrow?')
+      console.log('text sent');
   }
 
   onDecline() {
@@ -70,7 +74,7 @@ class Cart extends Component {
     items = ds.cloneWithRows(sortedDeals);
     // console.log(this.props.cart.items);
     const selectedItems = this.props.items.filter(i=>i.isChecked == true);
-    console.log(this.props.items);
+    // console.log(this.props.items);
       return (
         <View>
               <ScrollView {...this.props}>

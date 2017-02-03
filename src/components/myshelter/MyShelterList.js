@@ -58,9 +58,7 @@ class MyShelterList extends Component {
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}
                 />
-              <View>
-                <NavBar />
-              </View>
+            
         </View>
 
         );
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = state => {
- // console.log(state.itemsData);
+  console.log(state.itemsData);
  return { itemsData: state.itemsData };
 };
 

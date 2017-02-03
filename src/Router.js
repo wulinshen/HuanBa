@@ -25,6 +25,7 @@ import ShoppingCart from './components/shoppingcart/Cart';
 
 import UploadFromCameraRoll from './components/blob/UploadFromCameraRoll';
 import AddPicture from './components/blob/AddPicture';
+// import BlobTest from './components/blob/BlobTest';
 
 
 const RouterComponent = () => {
@@ -46,11 +47,11 @@ const RouterComponent = () => {
       </Scene>
 */}
       <Scene key="lookaround">
-        <Scene key="Main" component={Main} title="Welcome"  initial/>
+        <Scene key="Main" component={Main} title="Welcome"  />
         <Scene key="LoginForm" component={LoginForm} title="Login"  />
         <Scene key="RegisterForm" component={RegisterForm} title="Register"  />
 
-        <Scene key="MyShelterList" component={MyShelterList} title="MyShelterList"  />
+        <Scene key="MyShelterList" component={MyShelterList} title="MyShelterList"  initial/>
         <Scene key="MyShelterCreate" component={MyShelterCreate} title="MyShelterCreate"  />
         <Scene key="MyShelterEdit" component={MyShelterEdit} title="MyShelterEdit"  />
         <Scene key="MyShelterListItemDetail" component={MyShelterListItemDetail} title="Detail"  />
@@ -59,7 +60,7 @@ const RouterComponent = () => {
         <Scene key="OwnerProfileList" component={OwnerProfileList} title="OwnerProfileList"  />
         <Scene key="OwnerProfileCreate" component={OwnerProfileCreate} title="OwnerProfileCreate"  />
         <Scene key="OwnerProfileEdit" component={OwnerProfileEdit} title="OwnerProfileEdit"  />
-        <Scene key="OwnerProfileListItemDetail" component={OwnerProfileListItemDetail} title="Detail"  />
+        <Scene key="OwnerProfileListItemDetail" component={OwnerProfileListItemDetail} title="OwnerProfileListItemDetail"  />
 
         <Scene key="LookAroundMain" component={LookAroundMain} title="LookAroundMain"  />
         <Scene key="LookAroundList" component={LookAroundList} title="LookAroundList" />
