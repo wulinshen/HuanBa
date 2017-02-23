@@ -13,6 +13,8 @@ import NavBar from '../navigation/NavBar';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/ItemActions'
+import {Input, Card, CardSection, Button, Spinner} from '../common';
+
 
 
 
@@ -37,6 +39,13 @@ class LookAroundList extends Component {
     this.dataSource = ds.cloneWithRows(itemsData);
   }
 
+  renderSpinner(){
+    // console.log(this.props.itemsData.isLoading);
+    if (this.props.itemsData.isLoading){
+    return (<Spinner size="large"/>);
+    }
+  }
+
   renderRow(item){
     return <LookAroundListItem item={item}/>
   }
@@ -56,8 +65,10 @@ class LookAroundList extends Component {
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}
                 />
-
-                </ScrollView>
+        </ScrollView>
+                <CardSection>
+                  {this.renderSpinner()}
+                </CardSection>
      </View>
 
         );

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Card, CardSection, Input, Button, Spinner } from '../common';
 import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+import * as actionCreators from '../../actions/AuthActions'
 
 
 class RegisterForm extends Component {
@@ -9,42 +12,79 @@ class RegisterForm extends Component {
     super(props);
 
     this.state = {
-    loading: false,
-    email: '',
-    password: ''
+    password_error:'',
+    reenter_password: ''
     };
 
-    this.onLoginButtonPress = this.onLoginButtonPress.bind(this);
+    this.onRegisterButtonPress = this.onRegisterButtonPress.bind(this);
+    this.onSignOutUserButtonPress = this.onSignOutUserButtonPress.bind(this);
+    // this.onGetUserButtonPress = this.onGetUserButtonPress.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onReEnterPasswordChange = this.onReEnterPasswordChange.bind(this);
     this.renderButton = this.renderButton.bind(this);
 
   }
 
-  onLoginButtonPress() {
-  Actions.LookAroundMain();
+  onRegisterButtonPress() {
+    const { email, password } = this.props;
+    console.log(email, password);
+
+    if (this.props.password == this.state.reenter_password){
+    this.props.actions.registerUser(this.state.email, this.state.password);
+    Actions.LookAroundMain();
+    }
+    else {
+      this.setState({password_error:'Passwords Do Not Match'});
+    }
+  }
+
+  // onGetUserButtonPress(){
+  //   this.props.actions.getLoginUser()
+  //                     .then(user => console.log(user))
+  //                     .catch(error => console.log(error));
+  //
+  // }
+
+
+  onSignOutUserButtonPress(){
+    this.props.actions.signOutUser();
+
   }
 
   onEmailChange(text) {
-    this.setState({email: text});
+    this.props.actions.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    this.setState({password: text});
+    this.props.actions.passwordChanged(text);
+  }
+
+  onReEnterPasswordChange(text) {
+    this.setState({reenter_password: text});
   }
 
 
   renderButton() {
-    if (this.state.loading) {
+    if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
     return (
       <View>
-      <Button  style={styles.buttonStyle} buttonColor='blue' textColor='white'
-      onPress={this.onLoginButtonPress}>
-        Login
-      </Button>
+        <Button  style={styles.buttonStyle} buttonColor='blue' textColor='white'
+        onPress={this.onRegisterButtonPress}>
+          Register
+        </Button>
+
+
+
+        <Button  style={styles.buttonStyle} buttonColor='red' textColor='white'
+        onPress={this.onSignOutUserButtonPress}>
+          Logout
+        </Button>
+
+
       </View>
     );
   }
@@ -57,7 +97,7 @@ class RegisterForm extends Component {
             label="Email"
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange}
-            value={this.state.email}
+            value={this.props.email}
           />
         </CardSection>
 
@@ -67,11 +107,23 @@ class RegisterForm extends Component {
             label="Password"
             placeholder="password"
             onChangeText={this.onPasswordChange}
-            value={this.state.password}
+            value={this.props.password}
           />
         </CardSection>
 
+        <CardSection>
+          <Input
+            secureTextEntry
+            label="Confirm Password"
+            placeholder="Same password"
+            onChangeText={this.onReEnterPasswordChange}
+            value={this.state.reenter_password}
+          />
+        </CardSection>
+
+
         <Text style={styles.errorTextStyle}>
+          {this.state.password_error}
           {this.props.error}
         </Text>
 
@@ -97,5 +149,14 @@ const styles = {
   }
 };
 
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
+  return { email, password, error, loading };
+};
 
-export default RegisterForm;
+const mapDispatchToProps = (dispatch) => {
+ return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

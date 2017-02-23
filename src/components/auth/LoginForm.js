@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Card, CardSection, Input, Button, Spinner } from '../common';
 import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+import * as actionCreators from '../../actions/AuthActions'
 
 
 class LoginForm extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-    loading: false,
-    email: '',
-    password: ''
-    };
 
     this.onLoginButtonPress = this.onLoginButtonPress.bind(this);
+    this.onSignOutUserButtonPress = this.onSignOutUserButtonPress.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.renderButton = this.renderButton.bind(this);
@@ -23,24 +22,36 @@ class LoginForm extends Component {
   }
 
   onLoginButtonPress() {
-  Actions.OwnerProfileMain();
+    const {email, password, error, user} = this.props;
+    console.log({email, password, error, user});
+    this.props.actions.loginUser(email, password);
+    // Actions.UserPage({email: user.email})
+
+  // Actions.OwnerProfileMain();
+
   }
 
   onRegisterButtonPress(){
   Actions.RegisterForm();
   }
 
+
+  onSignOutUserButtonPress(){
+    this.props.actions.signOutUser();
+
+  }
+
   onEmailChange(text) {
-    this.setState({email: text});
+    this.props.actions.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    this.setState({password: text});
+    this.props.actions.passwordChanged(text);
   }
 
 
   renderButton() {
-    if (this.state.loading) {
+    if (this.props.loading) {
       return <Spinner size="large" />;
     }
 
@@ -51,9 +62,14 @@ class LoginForm extends Component {
           Login
         </Button>
 
-        <Button  style={styles.buttonStyle} buttonColor='red' textColor='white'
+        <Button  style={styles.buttonStyle} buttonColor='green' textColor='white'
         onPress={this.onRegisterButtonPress}>
           Register
+        </Button>
+
+        <Button  style={styles.buttonStyle} buttonColor='red' textColor='white'
+        onPress={this.onSignOutUserButtonPress}>
+          Logout
         </Button>
       </View>
     );
@@ -67,7 +83,7 @@ class LoginForm extends Component {
             label="Email"
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange}
-            value={this.state.email}
+            value={this.props.email}
           />
         </CardSection>
 
@@ -77,7 +93,7 @@ class LoginForm extends Component {
             label="Password"
             placeholder="password"
             onChangeText={this.onPasswordChange}
-            value={this.state.password}
+            value={this.props.password}
           />
         </CardSection>
 
@@ -108,4 +124,16 @@ const styles = {
 };
 
 
-export default LoginForm;
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
+  // console.log(email, password, error, loading);
+  return { email, password, error, loading };
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+ return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

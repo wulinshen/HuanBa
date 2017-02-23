@@ -8,6 +8,7 @@ import LookAroundListItemDetail from './components/lookaround/LookAroundListItem
 
 import LoginForm from './components/auth/LoginForm';
 import RegisterForm from './components/auth/RegisterForm';
+import UserPage from './components/auth/UserPage';
 
 import MyShelterList from './components/myshelter/MyShelterList';
 import MyShelterCreate from './components/myshelter/MyShelterCreate';
@@ -48,10 +49,11 @@ const RouterComponent = () => {
 */}
       <Scene key="lookaround">
         <Scene key="Main" component={Main} title="Welcome"  />
-        <Scene key="LoginForm" component={LoginForm} title="Login"  />
-        <Scene key="RegisterForm" component={RegisterForm} title="Register"  />
+        <Scene key="LoginForm" component={LoginForm} title="Login" initial />
+        <Scene key="RegisterForm" component={RegisterForm} title="Register"   />
+        <Scene key="UserPage" component={UserPage} title="UserPage"   />
 
-        <Scene key="MyShelterList" component={MyShelterList} title="MyShelterList"  initial/>
+        <Scene key="MyShelterList" component={MyShelterList} title="MyShelterList"  />
         <Scene key="MyShelterCreate" component={MyShelterCreate} title="MyShelterCreate"  />
         <Scene key="MyShelterEdit" component={MyShelterEdit} title="MyShelterEdit"  />
         <Scene key="MyShelterListItemDetail" component={MyShelterListItemDetail} title="Detail"  />

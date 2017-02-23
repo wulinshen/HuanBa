@@ -13,7 +13,7 @@ import NavBar from '../navigation/NavBar';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/ItemActions'
-import {Input, Card, CardSection, Button} from '../common';
+import {Input, Card, CardSection, Button, Spinner} from '../common';
 
 
 
@@ -42,6 +42,13 @@ class MyShelterList extends Component {
      Actions.MyShelterCreate({item: this.props.item});
   }
 
+  renderSpinner(){
+    // console.log(this.props.itemsData.isLoading);
+    if (this.props.itemsData.isLoading){
+    return (<Spinner size="large"/>);
+    }
+  }
+
   renderRow(item){
     return <MyShelterListItem key={item._id} item={item}/>
   }
@@ -58,7 +65,11 @@ class MyShelterList extends Component {
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}
                 />
-            
+
+                <CardSection>
+                  {this.renderSpinner()}
+                </CardSection>
+
         </View>
 
         );
@@ -78,7 +89,7 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = state => {
-  console.log(state.itemsData);
+  // console.log(state.itemsData);
  return { itemsData: state.itemsData };
 };
 

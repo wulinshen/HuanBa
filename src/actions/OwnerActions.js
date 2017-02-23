@@ -2,6 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   OWNER_UPDATE,
   OWNER_CREATE,
+  OWNER_FETCH_START,
   OWNER_FETCH_SUCCESS,
   OWNER_SAVE_SUCCESS,
   OWNER_FORM_EMPTY
@@ -33,6 +34,7 @@ export const ownerCreate = ({ userName, profileUrl }) => {
 
 export const ownerFetch = () => {
   return (dispatch) => {
+    dispatch({ type: OWNER_FETCH_START });
     axios.get(`${apiUrl}/${userid}`).then(response => {
         dispatch({ type: OWNER_FETCH_SUCCESS, payload: response.data });
        //  console.log(response.data);

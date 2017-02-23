@@ -12,7 +12,7 @@ import NavBar from '../navigation/NavBar';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/OwnerActions'
-import {Input, Card, CardSection, Button} from '../common';
+import {Input, Card, CardSection, Button, Spinner} from '../common';
 
 
 
@@ -40,6 +40,13 @@ class OwnerProfileList extends Component {
      Actions.MyShelterCreate({owner: this.props.owner});
   }
 
+  renderSpinner(){
+    // console.log(this.props.itemsData.isLoading);
+    if (this.props.itemsData.isLoading){
+    return (<Spinner size="large"/>);
+    }
+  }
+
   renderRow(owner){
     return <OwnerProfileListItem key={owner._id} owner={owner}/>
   }
@@ -53,6 +60,9 @@ class OwnerProfileList extends Component {
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}
                 />
+                <CardSection>
+                  {this.renderSpinner()}
+                </CardSection>
         </View>
 
         );

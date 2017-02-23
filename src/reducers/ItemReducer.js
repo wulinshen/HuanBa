@@ -1,4 +1,5 @@
 import {
+  ITEMS_FETCH_START,
   ITEMS_FETCH_SUCCESS
 } from '../actions/types';
 
@@ -9,6 +10,8 @@ export default (state = INITIAL_STATE, action) => {
     case ITEMS_FETCH_SUCCESS:
     // console.log(action.payload);
       return action.payload;
+    case ITEMS_FETCH_START:
+      return {isLoading: true };
     default:
       return state;
   }

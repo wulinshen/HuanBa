@@ -1,4 +1,5 @@
 import {
+  OWNER_FETCH_START,
   OWNER_FETCH_SUCCESS
 } from '../actions/types';
 
@@ -9,6 +10,8 @@ export default (state = INITIAL_STATE, action) => {
     case OWNER_FETCH_SUCCESS:
     // console.log(action.payload);
       return action.payload;
+    case OWNER_FETCH_START:
+      return {isLoading: true };
     default:
       return state;
   }

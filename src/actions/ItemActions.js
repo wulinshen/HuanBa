@@ -2,6 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   ITEM_UPDATE,
   ITEM_CREATE,
+  ITEMS_FETCH_START,
   ITEMS_FETCH_SUCCESS,
   ITEM_SAVE_SUCCESS,
   ITEM_FORM_EMPTY
@@ -55,6 +56,7 @@ export const itemCreate = ({ itemName, category, description, itemImageUrl }) =>
 
 export const itemsFetch = () => {
   return (dispatch) => {
+    dispatch({ type: ITEMS_FETCH_START });
     axios.get(`${apiUrl}/${userid}`).then(response => {
         dispatch({ type: ITEMS_FETCH_SUCCESS, payload: response.data.items });
         // console.log(response.data[0].items);

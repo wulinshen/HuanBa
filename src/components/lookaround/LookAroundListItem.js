@@ -69,7 +69,7 @@ class LookAroundListItem extends Component {
   render() {
     const {itemName, category, itemImageUrl} = this.props.item;
     const {thumbnailContainerStyle, imageStyle, headerContentStyle, headerTextStyle} = styles;
-     console.log(itemName, category, itemImageUrl);
+    // console.log(itemName, category, itemImageUrl);
 
     return (
       <TouchableOpacity onPress={this.onItemPress}>
